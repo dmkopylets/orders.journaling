@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  web:
+    container_name: e-journal_web
+    ports:
+      - "80:80"
+    build:
+      context: ./docker
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www/localhost/htdocs/
+      - ./docker/logs:/var/www/logs/
+    environment:
+      #PHP_EXTENSION_XDEBUG: 1
+      PHP_INI_DIR: /usr/local/etc/php
+      TZ: "Europe/Kiev"
+      APACHE_LOG_DIR: /var/www/logs
+  db:
+    container_name: e-journal_db
+    image: postgres:14-alpine 
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: $DB_USERNAME
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: $DB_DATABASE
+    volumes:
+      - ./docker/db/data:/var/lib/postgresql/data:rw
