@@ -96,12 +96,12 @@
     <table width="19cm">
         <tr>
             <td class="statistics_underlines"> доручається на:
-                <u><i>{{$substationType.', '.$substationTxt.', '.$order->objects}}</i></td>
+                <u><i>{{$substationType.', '.$substationTxt.', '.$order->objects}}</i></u></td>
         </tr>
         <tr>
             <td style="line-height: 70%; margin-top:0; margin-bottom:0; border:none; vertical-align: center;"><p
                     style="font-size:10pt; margin-top: 0; margin-bottom:0;">виконати: <u><i>
-                            {{$order->tasks}}</i></p></td>
+                            {{$order->tasks}}</i></u></p></td>
         </tr>
     </table>
 
@@ -122,7 +122,7 @@
     </div>
     <br>
     <h5 style="margin-bottom: 0; line-height: 70%;">Таблиця 1</h5>
-    <h5 style="margin-bottom: 0; margin-top: 0; text-align:center; line-height: 70%;">Заходи щодо підготовки робочих місць</h4>
+    <h5 style="margin-bottom: 0; margin-top: 0; text-align:center; line-height: 70%;">Заходи щодо підготовки робочих місць</h5>
         <table class="table_meashures" style="margin-bottom:0;">
             <thead>
             <tr valign="middle" style="line-height: 70%;">
@@ -185,7 +185,7 @@
         <br>
         <h5 style="margin-bottom: 0; margin-top: 20px; line-height: 160%;">Таблиця 2</h5>
         <h5 style="margin-bottom: 0; margin-top: 0; text-align:center; line-height: 60%;">Дозвіл на підготовку робочих
-            місць і на допуск</h4>
+            місць і на допуск</h5>
 
             <table class="table_meashures">
                 <thead class="thead-dark">
@@ -223,7 +223,7 @@
                 <div class="bblock"> Керівник робіт (наглядач) _____________________</div>
             </div>
             <div>
-                <div style="font-size: 8pt; text-align: top; margin-left: -150px; margin-top: 40px;">(підпис)</div>
+                <div style="font-size: 8pt; margin-left: -150px; margin-top: 40px;">(підпис)</div>
             </div>
 </div>
 </body>
