@@ -53,6 +53,7 @@ class OrderRecordDTO
         $array['editMode'] = $this->editMode;
     return $array;
     }
+
     public function fromArray($array): OrderRecordDTO
     {
         $this->id = $array['id'];

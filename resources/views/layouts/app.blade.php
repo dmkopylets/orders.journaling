@@ -2,10 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>e-Journal {{ isset($title) ? $title : 'Старт' }}</title>
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css" crossorigin="anonymous">
+    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
     <link rel="icon" href="{{ asset('img/favicons/favicon-32x32.png') }}" sizes="32x32" type="image/png">
@@ -42,7 +42,7 @@
     <body class="antialiased">
         @yield('content')
         @include('layouts.nav')
-        @include('layouts.footer')
+        @include('layouts.bootstrapjs')
     </body>
 </html>
 

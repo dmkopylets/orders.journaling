@@ -10,13 +10,6 @@
         <a class="nav-link" href="{{asset('/')}}">На старт<span class="sr-only">(current)</span></a>
       </li>
 
-
-        <!--if ($mode=='show')
-          <li class="nav-item">
-          <a class="nav-link" href=" asset('orders').'/'.$naryad->id.'/pdf' " tabindex="-1" >Друк (pdf)</a>
-        </li>
-        endif -->
-
       <li class="nav-item dropup">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Довіднички</a>
         <div class="dropdown-menu" aria-labelledby="dropdown10">
@@ -45,10 +38,4 @@
          </form>
      </div>
     </strong>
-
 </nav>
-
-
-
-
-

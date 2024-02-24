@@ -1,4 +1,4 @@
-FROM webdevops/php-apache-dev:8.1-alpine AS e-journal-php81-apache-Alpine
+FROM webdevops/php-apache-dev:8.3-alpine AS e-journal-php81-apache-Alpine
 
 # PHP_INI_DIR to be symmetrical with official php docker image
 ENV PHP_INI_DIR /usr/local/etc/php
