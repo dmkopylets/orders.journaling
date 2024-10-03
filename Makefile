@@ -23,7 +23,7 @@ dc-down:
 	$(DOCKER_COMPOSE) $(DOCKER_COMPOSE_FILE) down --remove-orphans
 
 bash:
-	$(EXEC_PHP) bash
+	$(EXEC_PHP) sh
 
 test:
 	$(EXEC_PHP) sh -c " APP_ENV=test php bin/phpunit"

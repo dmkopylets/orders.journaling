@@ -12,12 +12,4 @@
 auth.json
 npm-debug.log
 yarn-error.log
-/.idea
-/docker/logs
-/docker/logs/access.log
-/docker/logs/error.log
-/run_psalm
-/psalm.xml
-/phpstan.neon.dist
-_ide_helper.php
-_ide_helper_models.php
+/docker/logs/*
