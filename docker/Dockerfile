@@ -6,9 +6,9 @@ ENV TZ "Europe/Zaporozhye"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ENV APACHE_LOG_DIR /var/www/logs
 ENV APPLICATION_USER=application APPLICATION_GROUP=application
+ENV APACHE_RUN_USER=application APACHE_RUN_GROUP=application
 
 ENV APPLICATION_PATH=/public
-ENV APACHE_RUN_USER=application APACHE_RUN_GROUP=application
 
 # Add PHP configuration
 #ADD ./php.ini $PHP_INI_DIR/
@@ -42,10 +42,7 @@ EXPOSE 9000
 ENTRYPOINT ["/entrypoint"]
 CMD ["supervisord"]
 
-# Separate development environment installation (optional)
-# This section can be commented out if not needed
-ENV WEB_DOCUMENT_ROOT=/var/www/localhost/htdocs/public
-ENV WEB_DOCUMENT_INDEX=index.php
+
 ENV WEB_ALIAS_DOMAIN=*.local
 ENV WEB_NO_CACHE_PATTERN=\.(css|js|gif|png|jpg|svg|json|xml)$
 ENV WEB_PHP_SOCKET=127.0.0.1:9000
