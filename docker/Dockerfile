@@ -1,19 +1,18 @@
 FROM webdevops/php-apache-dev:8.3-alpine
 
 # Environment variables
-ENV PHP_INI_DIR /usr/local/etc/php
-ENV TZ "Europe/Zaporozhye"
+ENV PHP_INI_DIR=/usr/local/etc/php
+ENV TZ="Europe/Zaporozhye"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-ENV APACHE_LOG_DIR /var/www/logs
-ENV APPLICATION_USER=application APPLICATION_GROUP=application
-ENV APACHE_RUN_USER=application APACHE_RUN_GROUP=application
+ENV APACHE_LOG_DIR=/var/www/logs
+ENV APPLICATION_USER=apache APPLICATION_GROUP=apache
+ENV APACHE_RUN_USER=apache APACHE_RUN_GROUP=apache
 
-ENV APPLICATION_PATH=/public
 
-# Add PHP configuration
-#ADD ./php.ini $PHP_INI_DIR/
+ADD ./apache2/conf.d/vhosts.conf /etc/apache2/conf.d/
 COPY ./conf/ /opt/docker/
-#COPY ./conf/usr/local/php
+#COPY ../api/ /var/www/
+#COPY ../frontend/ /var/www/
 
 # Composer configuration
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -30,7 +29,7 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
 
 # Clear and configure logs
 RUN rm -rf /var/www/logs && mkdir /var/www/logs
-RUN ln -sf /dev/stdout /var/www/logs/access.log && ln -sf /dev/stderr /var/www/logs/error.log
+#RUN ln -sf /dev/stdout /var/www/logs/access.log && ln -sf /dev/stderr /var/www/logs/error.log
 
 # Set user and group ownership
 RUN chown -R $APPLICATION_USER:$APPLICATION_GROUP /var/www/localhost/htdocs/

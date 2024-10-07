@@ -8,10 +8,10 @@ services:
     depends_on:
       - db
     volumes:
-      - ./api/:/var/www/localhost/htdocs/api/
-      - ./frontend/:/var/www/localhost/htdocs/frontend/
+      - ./api:/var/www/localhost/htdocs/api/
+      - ./frontend:/var/www/localhost/htdocs/frontend/
       - ./docker/logs:/var/www/logs/
-      - ./docker/apache/vhost.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./docker/apache2/sites-enabled:/etc/apache2/sites-enabled/
     environment:
       PHP_EXTENSION_XDEBUG: 0
       PHP_INI_DIR: /usr/local/etc/php
