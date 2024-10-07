@@ -32,5 +32,5 @@ composer-i:
 	$(EXEC_PHP) sh -c " composer install"
 
 clear-cache:
-	$(EXEC_PHP) bash -c "  php artisan route:clear &&  php artisan config:cache && php artisan view:clear && php artisan route:clear && php artisan optimize:clear"
+	$(EXEC_PHP) bash -c "  php bin/console cache:clear"
 

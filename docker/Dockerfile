@@ -23,8 +23,12 @@ ARG DEPS="curl wget runit tzdata freetype-dev libgd libjpeg-turbo-dev libmcrypt-
 RUN apk add --update --no-cache $DEPS
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
-  && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+#RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
+#  && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+RUN curl -s http://getcomposer.org/installer | php && \
+    echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
+    mv composer.phar /usr/local/bin/composer
 
 
 # Clear and configure logs
