@@ -1,8 +1,29 @@
 /.idea/
-/frontend/node_modules
-/api/vendor
-.env
-.phpunit.result.cache
-.php-cs-fixer.cache
-auth.json
 /docker/logs/*
+
+/frontend/node_modules
+/frontend/public/bundles/
+
+###> symfony/framework-bundle ###
+/api/.env.local
+/api/.env.local.php
+/api/.env.*.local
+/api/config/secrets/prod/prod.decrypt.private.php
+/api/public/bundles/
+/api/var/
+/api/vendor/
+/api/.phpunit.result.cache
+###< symfony/framework-bundle ###
+
+/api/.editorconfig
+###> squizlabs/php_codesniffer ###
+/api/.phpcs-cache
+/api/phpcs.xml
+/api/phpcs.xml.dist
+###< squizlabs/php_codesniffer ###
+
+###> friendsofphp/php-cs-fixer ###
+/api/.php-cs-fixer.php
+/api/.php-cs-fixer.cache
+/api/.php-cs-fixer.dist.php
+###< friendsofphp/php-cs-fixer ###
