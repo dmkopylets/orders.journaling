@@ -8,7 +8,7 @@ ENV APACHE_LOG_DIR=/var/www/logs
 ENV APPLICATION_USER=apache APPLICATION_GROUP=apache
 ENV APACHE_RUN_USER=apache APACHE_RUN_GROUP=apache
 
-
+ADD ./conf/usr/local/etc/php/php.ini /usr/local/etc/php/
 ADD ./apache2/conf.d/vhosts.conf /etc/apache2/conf.d/
 COPY ./conf/ /opt/docker/
 #COPY ../api/ /var/www/
