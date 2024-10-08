@@ -1,0 +1,49 @@
+{% extends 'dicts/base.html.twig' %}
+
+{% block title %}Branch index{% endblock %}
+
+{% block body %}
+    <h1>Branch index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Body</th>
+                <th>Prefix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for branch in branches %}
+            <tr>
+                <td>{{ branch.id }}</td>
+                <td>{{ branch.body }}</td>
+                <td>{{ branch.prefix }}</td>
+                <td>
+                    <a href="{{ path('admin_dict_branch_show', {'id': branch.id}) }}" class="btn btn-secondary btn-sm">show</a>
+                    <a href="{{ path('admin_dict_branch_edit', {'id': branch.id}) }}" class="btn btn-secondary btn-sm">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="?page={{ page - 1 }}">Previous</a>
+        {% endif %}
+
+        Page {{ page }} of {{ totalPages }}
+
+        {% if page < totalPages %}
+            <a href="?page={{ page + 1 }}">Next</a>
+        {% endif %}
+    </div>
+
+    <a href="{{ path('admin_dict_branch_new') }}" class="btn btn-outline-primary">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New DictAdjuster{% endblock %}
+
+{% block body %}
+    <h1>Create new DictAdjuster</h1>
+
+    {{ include('adjuster/_form.html.twig') }}
+
+    <a href="{{ path('app_dict_adjuster_index') }}">back to list</a>
+{% endblock %}

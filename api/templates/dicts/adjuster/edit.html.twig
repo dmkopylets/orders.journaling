@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DictAdjuster{% endblock %}
+
+{% block body %}
+    <h1>Edit DictAdjuster</h1>
+
+    {{ include('adjuster/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_dict_adjuster_index') }}">back to list</a>
+
+    {{ include('adjuster/_delete_form.html.twig') }}
+{% endblock %}

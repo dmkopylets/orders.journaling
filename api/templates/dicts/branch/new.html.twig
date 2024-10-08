@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Branch{% endblock %}
+
+{% block body %}
+    <h1>Create new Branch</h1>
+
+    {{ include('dicts/branch/_form.html.twig') }}
+
+    <a href="{{ path('admin_dict_branch_index') }}" class="btn btn-secondary btn-sm mt-1">back to list</a>
+{% endblock %}
