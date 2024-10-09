@@ -1,5 +1,9 @@
 {% extends 'dicts/base.html.twig' %}
 
+{% block top_nav_links_right %}
+    <a href="{{ path('admin_dict_branch_index') }}" class="btn btn-secondary btn-sm">back to list</a>
+{% endblock %}
+
 {% block title %}Branch{% endblock %}
 
 {% block body %}
@@ -21,8 +25,6 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('admin_dict_branch_index') }}" class="btn btn-secondary btn-sm">back to list</a>
 
     <a href="{{ path('admin_dict_branch_edit', {'id': branch.id}) }}" class="btn btn-secondary btn-sm">edit</a>
 

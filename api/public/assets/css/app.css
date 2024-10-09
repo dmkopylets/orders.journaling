@@ -1,8 +1,11 @@
 body {
-    background-color: lightgray;
+    background: #f5f7fa;
+    /*background-color: lightgray;*/
     display: flex;
     flex-direction: column;
     height: 100vh;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 a {
@@ -11,6 +14,15 @@ a {
 
 main {
     flex: 1;
+}
+
+.content {
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 0.4rem;
+    /* Thanks Stripe */
+    box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1),
+    0 3px 6px 0 rgba(0, 0, 0, 0.07);
 }
 
 .container {
@@ -23,4 +35,54 @@ main {
 .page-item.active .page-link {
     background-color: #007bff;
     border-color: #007bff;
+}
+
+/* Nav bar */
+.top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem;
+    margin: 0 auto 2rem;
+    background-color: #343a40;
+}
+.top-nav-title a {
+    font-size: 2.4rem;
+    color: #d33c43;
+}
+.top-nav-title span {
+    color: #404041;
+}
+.top-nav-links a {
+    margin: 0 0.5rem;
+}
+.top-nav-title a,
+.top-nav-links a {
+    font-weight: bold;
+}
+
+.top_nav_links_right {
+    margin-left: auto;
+    padding-right: 1rem; /* Додаємо невеликий відступ від краю */
+}
+
+.top_nav_links_right a {
+    font-weight: bold;
+    color: white;
+    margin: 0 0.5rem;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.previous-link {
+    margin-right: 2rem;
+}
+
+.next-link {
+    margin-left: 2rem;
 }

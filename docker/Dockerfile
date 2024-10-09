@@ -11,8 +11,6 @@ ENV APACHE_RUN_USER=apache APACHE_RUN_GROUP=apache
 ADD ./conf/usr/local/etc/php/php.ini /usr/local/etc/php/
 ADD ./apache2/conf.d/vhosts.conf /etc/apache2/conf.d/
 COPY ./conf/ /opt/docker/
-#COPY ../api/ /var/www/
-#COPY ../frontend/ /var/www/
 
 # Composer configuration
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -23,12 +21,12 @@ ARG DEPS="curl wget runit tzdata freetype-dev libgd libjpeg-turbo-dev libmcrypt-
 RUN apk add --update --no-cache $DEPS
 
 # Install Composer
-#RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
-#  && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
+  && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-RUN curl -s http://getcomposer.org/installer | php && \
-    echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
-    mv composer.phar /usr/local/bin/composer
+#RUN curl -s http://getcomposer.org/installer | php && \
+#    echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
+#    mv composer.phar /usr/local/bin/composer
 
 
 # Clear and configure logs

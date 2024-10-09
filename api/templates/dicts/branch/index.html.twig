@@ -33,15 +33,15 @@
         </tbody>
     </table>
 
-    <div class="pagination">
+    <div class="pagination mb-1">
         {% if page > 1 %}
-            <a href="?page={{ page - 1 }}">Previous</a>
+            <a href="?page={{ page - 1 }}" class="previous-link">Previous</a>
         {% endif %}
 
         Page {{ page }} of {{ totalPages }}
 
         {% if page < totalPages %}
-            <a href="?page={{ page + 1 }}">Next</a>
+            <a href="?page={{ page + 1 }}"  class="next-link">Next</a>
         {% endif %}
     </div>
 
