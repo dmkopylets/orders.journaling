@@ -86,3 +86,22 @@ main {
 .next-link {
     margin-left: 2rem;
 }
+
+.form-buttons {
+    display: flex; /* розміщує елементи (форму для "Update" і форму для "Delete") в один рядок. */
+    justify-content: space-between; /* Рознести кнопки по краях */
+    align-items: center; /* Вирівнювання по вертикалі */
+    margin-bottom: 1rem; /* Додатковий відступ знизу для зручності */
+}
+
+.form-buttons form {
+    margin: 0; /* Прибираємо відступи у форм */
+}
+
+.form-buttons .btn {
+    width: auto;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}

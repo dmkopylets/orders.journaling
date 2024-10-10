@@ -1,7 +1,7 @@
 {% extends 'dicts/base.html.twig' %}
 
 {% block top_nav_links_right %}
-    <a href="{{ path('admin_dict_branch_index') }}" class="btn btn-secondary btn-sm">back to list</a>
+    <a href="{{ path('admin_dict_branch_index') }}" class="btn btn-secondary btn-sm ml-auto mb-1 mt-1">back to list</a>
 {% endblock %}
 
 {% block title %}Branch{% endblock %}
@@ -26,7 +26,14 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_dict_branch_edit', {'id': branch.id}) }}" class="btn btn-secondary btn-sm">edit</a>
+    <div class="form-buttons d-flex justify-content-between mt-4">
+        <div>
+            <a href="{{ path('admin_dict_branch_edit', {'id': branch.id}) }}" class="btn btn-secondary btn-sm">Edit</a>
 
+{#    <a href="{{ path('admin_dict_branch_edit', {'id': branch.id}) }}" class="btn btn-secondary btn-sm">edit</a>#}
+    </div>
+    <div>
     {{ include('dicts/branch/_delete_form.html.twig') }}
+    </div>
+    </div>
 {% endblock %}

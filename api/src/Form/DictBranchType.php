@@ -12,9 +12,15 @@ class DictBranchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('id')
-            ->add('body')
-            ->add('prefix')
+            ->add('id', null, [
+                'attr' => ['class' => 'form-control mb-1']
+            ])
+            ->add('body', null, [
+                'attr' => ['class' => 'form-control mb-1']
+            ])
+            ->add('prefix', null, [
+                'attr' => ['class' => 'form-control mb-3']
+            ])
         ;
     }
 
