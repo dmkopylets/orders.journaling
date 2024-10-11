@@ -31,6 +31,11 @@ test:
 composer-i:
 	$(EXEC_PHP) sh -c " composer install"
 
-clear-cache:
-	$(EXEC_PHP) bash -c "  php bin/console cache:clear"
+migrate-diff:
+	$(EXEC_PHP) sh -c "cd backend; php bin/console doctrine:migrations:diff"
 
+clear-cache:
+	$(EXEC_PHP) bash -c "cd frontend; php bin/console cache:clear"
+
+swagger-generate:
+	$(EXEC_PHP) sh -c "cd api; vendor/bin/openapi /var/www/localhost/htdocs/api/src -o /var/www/localhost/htdocs/api-docs/swagger.json"

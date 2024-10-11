@@ -36,7 +36,7 @@ final class DictBranchController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'admin_dict_branch_new', methods: ['GET', 'POST'])]
+    #[Route('/create', name: 'admin_dict_branch_create', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $branch = new DictBranch();

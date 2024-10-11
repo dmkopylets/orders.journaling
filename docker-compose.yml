@@ -9,6 +9,7 @@ services:
       - db
     volumes:
       - ./api:/var/www/localhost/htdocs/api/
+      - ./api-docs:/var/www/localhost/htdocs/api-docs/
       - ./frontend:/var/www/localhost/htdocs/frontend/
       - ./docker/logs:/var/www/logs/
       - ./docker/apache2/sites-enabled:/etc/apache2/sites-enabled/

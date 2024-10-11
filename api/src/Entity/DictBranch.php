@@ -35,6 +35,11 @@ class DictBranch
         return $this->id;
     }
 
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
     public function getBody(): ?string
     {
         return $this->body;

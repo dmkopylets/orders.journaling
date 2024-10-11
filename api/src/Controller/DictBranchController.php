@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\DictBranch;
 use Doctrine\ORM\EntityManagerInterface;
+use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,12 +15,29 @@ use Symfony\Component\Serializer\SerializerInterface;
 #[Route('/dict/branch')]
 class DictBranchController extends AbstractController
 {
+    /**
+     * @OA\Get(
+     *     path="/dict/branch",
+     *     summary="Get a list of branches",
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of branches",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 @OA\Property(property="id", type="integer"),
+     *                 @OA\Property(property="body", type="string"),
+     *                 @OA\Property(property="prefix", type="string")
+     *             )
+     *         )
+     *     )
+     * )
+     */
     #[Route(name: 'dict_branch_index', methods:['get'])]
     public function index(EntityManagerInterface $entityManager, SerializerInterface $serializer): Response
     {
         $branches = $entityManager
             ->getRepository(DictBranch::class)
-//            ->findAllWithSelectedFields()
             ->createQueryBuilder('b')
             ->select('b.id, b.body, b.prefix')
             ->getQuery()
@@ -29,7 +47,27 @@ class DictBranchController extends AbstractController
         return new Response($data, 200, ['Content-Type' => 'application/json']);
     }
 
-    #[Route('/branches', name: 'branch_create', methods:['post'])]
+    /**
+     * @OA\Post(
+     *     path="/dict/branch/create",
+     *     summary="Create a new branch",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="body", type="string", description="Body of the branch")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Branch created",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="body", type="string")
+     *         )
+     *     )
+     * )
+     */
+    #[Route('/create', name: 'dict_branch_create', methods:['post'])]
     public function create(EntityManagerInterface $entityManager, Request $request): JsonResponse
     {
         $branch = new DictBranch();
@@ -46,8 +84,30 @@ class DictBranchController extends AbstractController
         return $this->json($data);
     }
 
-
-    #[Route('/branches/{id}', name: 'branch_show', methods:['get'])]
+    /**
+     * @OA\Get(
+     *     path="/dict/branch/{id}",
+     *     summary="Get branch details by ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the branch",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Branch details",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="body", type="string"),
+     *             @OA\Property(property="prefix", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=404, description="Branch not found")
+     * )
+     */
+    #[Route('/{id}', name: 'dict_branch_show', methods:['get'])]
     public function show(EntityManagerInterface $entityManager, int $id, SerializerInterface $serializer): Response
     {
         $branch = $entityManager->getRepository(DictBranch::class)->find($id);
@@ -64,7 +124,36 @@ class DictBranchController extends AbstractController
         return new Response($data, 200, ['Content-Type' => 'application/json']);
     }
 
-    #[Route('/branches/{id}', name: 'branch_update', methods:['put', 'patch'])]
+    /**
+     * @OA\Put(
+     *     path="/dict/branch/{id}",
+     *     summary="Update branch by ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the branch to update",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="title", type="string", description="New title for the branch")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Branch updated",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="title", type="string"),
+     *             @OA\Property(property="prefix", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=404, description="Branch not found")
+     * )
+     */
+    #[Route('/{id}', name: 'dict_branch_update', methods:['put', 'patch'])]
     public function update(EntityManagerInterface $entityManager, Request $request, int $id): JsonResponse
     {
         $branch = $entityManager->getRepository(DictBranch::class)->find($id);
@@ -78,12 +167,34 @@ class DictBranchController extends AbstractController
         $data =  [
             'id' => $branch->getId(),
             'title' => $branch->getName(),
+            'prefix' => $branch->getPrefix(),
         ];
 
         return $this->json($data);
     }
 
-    #[Route('/branches/{id}', name: 'branch_delete', methods:['delete'])]
+    /**
+     * @OA\Delete(
+     *     path="/dict/branch/{id}",
+     *     summary="Delete branch by ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the branch to delete",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Branch deleted",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=404, description="Branch not found")
+     * )
+     */
+    #[Route('/{id}', name: 'dict_branch_delete', methods:['delete'])]
     public function delete(EntityManagerInterface $entityManager, int $id): JsonResponse
     {
         $branch = $entityManager->getRepository(DictBranch::class)->find($id);
