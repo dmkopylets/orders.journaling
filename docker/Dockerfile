@@ -2,9 +2,9 @@ FROM webdevops/php-apache-dev:8.3-alpine
 
 # Environment variables
 ENV PHP_INI_DIR /usr/local/etc/php
-ENV TZ "Europe/Zaporozhye"
+ENV TZ="Europe/Zaporozhye"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-ENV APACHE_LOG_DIR /var/www/logs
+ENV APACHE_LOG_DIR=/var/www/logs
 ENV APPLICATION_USER=application APPLICATION_GROUP=application
 
 ENV APPLICATION_PATH=/public
