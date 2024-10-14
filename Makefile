@@ -38,4 +38,4 @@ clear-cache:
 	$(EXEC_PHP) bash -c "cd frontend; php bin/console cache:clear"
 
 swagger-generate:
-	$(EXEC_PHP) sh -c "cd api; vendor/bin/openapi /var/www/localhost/htdocs/api/src -o /var/www/localhost/htdocs/api-docs/swagger.json"
+	$(EXEC_PHP) sh -c "cd api; vendor/bin/openapi /var/www/localhost/htdocs/api/src/Controller/Api -o /var/www/localhost/htdocs/api-docs/swagger.json"

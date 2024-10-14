@@ -12,7 +12,7 @@ class DictAdjuster
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'IDENTITY')]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private int $id;
 
     #[ORM\Column]

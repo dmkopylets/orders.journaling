@@ -1,0 +1,53 @@
+{% extends 'admin/main.html.twig' %}
+
+{% block title %}Adjusters list{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Adjusters list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Body</th>
+                <th>Group</th>
+                <th>Branch</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adjuster in adjusters %}
+            <tr>
+                <td>{{ adjuster.id }}</td>
+                <td>{{ adjuster.body }}</td>
+                <td>{{ adjuster.inGroup }}</td>
+                <td>{{ adjuster.branch.body }}</td>
+                <td>
+                    <a href="{{ path('admin_dict_adjuster_show', {'id': adjuster.id}) }}" class="btn btn-secondary btn-sm">show</a>
+                    <a href="{{ path('admin_dict_adjuster_edit', {'id': adjuster.id}) }}" class="btn btn-secondary btn-sm">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination mb-1">
+        {% if page > 1 %}
+            <a href="?page={{ page - 1 }}" class="previous-link">Previous</a>
+        {% endif %}
+
+        Page {{ page }} of {{ totalPages }}
+
+        {% if page < totalPages %}
+            <a href="?page={{ page + 1 }}"  class="next-link">Next</a>
+        {% endif %}
+    </div>
+
+    <a href="{{ path('admin_dict_adjuster_new') }}" class="btn btn-outline-primary">Create new</a>
+</div>
+{% endblock %}

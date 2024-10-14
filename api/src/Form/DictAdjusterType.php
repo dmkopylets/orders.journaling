@@ -14,12 +14,18 @@ class DictAdjusterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('branch_id')
-            ->add('body')
-            ->add('in_group')
+            ->add('body', null, [
+                'label' => 'Name',
+                'attr' => ['class' => 'form-control mb-1']
+            ])
+            ->add('inGroup', null, [
+                'label' => 'Group',
+                'attr' => ['class' => 'form-control mb-1']
+            ])
             ->add('branch', EntityType::class, [
                 'class' => DictBranch::class,
-        'choice_label' => 'id',
+                'attr' => ['class' => 'form-control mb-3'],
+                'choice_label' => 'body',
             ])
         ;
     }

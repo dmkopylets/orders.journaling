@@ -29,14 +29,14 @@ final class DictBranchController extends AbstractController
         $totalItems = count($paginator);
         $totalPages = ceil($totalItems / $pageSize);
 
-        return $this->render('dicts/branch/index.html.twig', [
+        return $this->render('admin/dicts/branch/index.html.twig', [
             'branches' => $paginator,
             'page' => $page,
             'totalPages' => $totalPages
         ]);
     }
 
-    #[Route('/create', name: 'admin_dict_branch_create', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'admin_dict_branch_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $branch = new DictBranch();
@@ -50,7 +50,7 @@ final class DictBranchController extends AbstractController
             return $this->redirectToRoute('admin_dict_branch_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('dicts/branch/new.html.twig', [
+        return $this->render('admin/dicts/branch/new.html.twig', [
             'branch' => $branch,
             'form' => $form,
         ]);
@@ -59,7 +59,7 @@ final class DictBranchController extends AbstractController
     #[Route('/{id}', name: 'admin_dict_branch_show', methods: ['GET'])]
     public function show(DictBranch $branch): Response
     {
-        return $this->render('dicts/branch/show.html.twig', [
+        return $this->render('admin/dicts/branch/show.html.twig', [
             'branch' => $branch,
         ]);
     }
@@ -76,7 +76,7 @@ final class DictBranchController extends AbstractController
             return $this->redirectToRoute('admin_dict_branch_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('dicts/branch/edit.html.twig', [
+        return $this->render('admin/dicts/branch/edit.html.twig', [
             'branch' => $branch,
             'form' => $form,
         ]);

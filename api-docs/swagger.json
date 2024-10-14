@@ -1,10 +1,250 @@
 {
     "openapi": "3.0.0",
     "paths": {
+        "/dict/ajuster": {
+            "get": {
+                "summary": "Get a list of adjusters",
+                "operationId": "aaecaccd6ab4e4ab982bd8ac3c03d828",
+                "responses": {
+                    "200": {
+                        "description": "List of adjusteres",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "body": {
+                                                "type": "string"
+                                            },
+                                            "in_group": {
+                                                "type": "string"
+                                            },
+                                            "branch_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dict/adjuster/create": {
+            "post": {
+                "summary": "Create a new adjuster",
+                "operationId": "e27670ba62d58198e07c6065b4339ce3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "body": {
+                                        "description": "Body of the adjuster",
+                                        "type": "string"
+                                    },
+                                    "in_group": {
+                                        "description": "Group of the adjuster",
+                                        "type": "string"
+                                    },
+                                    "branch_id": {
+                                        "description": "Adjuster is a member of Branch",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Branch created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "body": {
+                                            "type": "string"
+                                        },
+                                        "in_group": {
+                                            "type": "string"
+                                        },
+                                        "branch_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dict/adjuster/{id}": {
+            "get": {
+                "summary": "Get adjuster details by ID",
+                "operationId": "23093bb5aaaaa98464e0c9d621df1858",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the adjuster",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Branch details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "body": {
+                                            "type": "string"
+                                        },
+                                        "in_group": {
+                                            "type": "string"
+                                        },
+                                        "branch_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Adjuster not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update adjuster by ID",
+                "operationId": "6b223c1423eb36d8e47fab9b8ed1e3ee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the adjuster to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "body": {
+                                        "description": "New title for the adjuster",
+                                        "type": "string"
+                                    },
+                                    "in_group": {
+                                        "description": "New goup for the adjuster",
+                                        "type": "string"
+                                    },
+                                    "branch_id": {
+                                        "description": "New branch_id for the adjuster",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Branch updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "body": {
+                                            "type": "string"
+                                        },
+                                        "in_group": {
+                                            "type": "string"
+                                        },
+                                        "branch_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Branch not found"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete adjuster by ID",
+                "operationId": "90dc2255310e91a1b819b210e35f2a64",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the adjuster to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Branch deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Branch not found"
+                    }
+                }
+            }
+        },
         "/dict/branch": {
             "get": {
                 "summary": "Get a list of branches",
-                "operationId": "79d29fe17ec5491a5faa204211549dc9",
+                "operationId": "ea55d7d7db15d59d8d1f6b6c3d2d9263",
                 "responses": {
                     "200": {
                         "description": "List of branches",
@@ -36,7 +276,7 @@
         "/dict/branch/create": {
             "post": {
                 "summary": "Create a new branch",
-                "operationId": "deecca2cf4c752fe50ea01376f383252",
+                "operationId": "660626169431501338ccc43e30e83038",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -45,6 +285,10 @@
                                 "properties": {
                                     "body": {
                                         "description": "Body of the branch",
+                                        "type": "string"
+                                    },
+                                    "prefix": {
+                                        "description": "Prefix to name for branch members",
                                         "type": "string"
                                     }
                                 },
@@ -78,7 +322,7 @@
         "/dict/branch/{id}": {
             "get": {
                 "summary": "Get branch details by ID",
-                "operationId": "96e3c30ac379c3d543b15ffe08bd2b02",
+                "operationId": "0120f0b0ae6367b9913e9641aec7486a",
                 "parameters": [
                     {
                         "name": "id",
@@ -119,7 +363,7 @@
             },
             "put": {
                 "summary": "Update branch by ID",
-                "operationId": "71086dbf297e6ea198e7f45e99395536",
+                "operationId": "9b3608eadfa0266c2d6b7f65799af8bd",
                 "parameters": [
                     {
                         "name": "id",
@@ -137,8 +381,12 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "title": {
+                                    "body": {
                                         "description": "New title for the branch",
+                                        "type": "string"
+                                    },
+                                    "prefix": {
+                                        "description": "New prefix for the branch members",
                                         "type": "string"
                                     }
                                 },
@@ -157,7 +405,7 @@
                                         "id": {
                                             "type": "integer"
                                         },
-                                        "title": {
+                                        "body": {
                                             "type": "string"
                                         },
                                         "prefix": {
@@ -176,7 +424,7 @@
             },
             "delete": {
                 "summary": "Delete branch by ID",
-                "operationId": "774a988dae76d97dc9649312dbb5a015",
+                "operationId": "bbf5ebe9b9e11be720032da3394b8f68",
                 "parameters": [
                     {
                         "name": "id",

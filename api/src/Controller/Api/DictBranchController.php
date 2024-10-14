@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Api;
 
 use App\Entity\DictBranch;
 use Doctrine\ORM\EntityManagerInterface;
-use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,7 +53,8 @@ class DictBranchController extends AbstractController
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="body", type="string", description="Body of the branch")
+     *             @OA\Property(property="body", type="string", description="Body of the branch"),
+     *             @OA\Property(property="prefix", type="string", description="Prefix to name for branch members")
      *         )
      *     ),
      *     @OA\Response(
@@ -62,7 +62,8 @@ class DictBranchController extends AbstractController
      *         description="Branch created",
      *         @OA\JsonContent(
      *             @OA\Property(property="id", type="integer"),
-     *             @OA\Property(property="body", type="string")
+     *             @OA\Property(property="body", type="string"),
+     *             @OA\Property(property="body", type="prefix")
      *         )
      *     )
      * )
@@ -138,7 +139,8 @@ class DictBranchController extends AbstractController
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="title", type="string", description="New title for the branch")
+     *             @OA\Property(property="body", type="string", description="New title for the branch"),
+     *             @OA\Property(property="prefix", type="string", description="New prefix for the branch members")
      *         )
      *     ),
      *     @OA\Response(
@@ -146,7 +148,7 @@ class DictBranchController extends AbstractController
      *         description="Branch updated",
      *         @OA\JsonContent(
      *             @OA\Property(property="id", type="integer"),
-     *             @OA\Property(property="title", type="string"),
+     *             @OA\Property(property="body", type="string"),
      *             @OA\Property(property="prefix", type="string")
      *         )
      *     ),
@@ -161,12 +163,13 @@ class DictBranchController extends AbstractController
             return $this->json('No branch found for id ' . $id, 404);
         }
 
-        $branch->setName($request->request->get('title'));
+        $branch->setBody($request->request->get('body'));
+        $branch->setPrefix($request->request->get('prefix'));
         $entityManager->flush();
 
         $data =  [
             'id' => $branch->getId(),
-            'title' => $branch->getName(),
+            'body' => $branch->getBody(),
             'prefix' => $branch->getPrefix(),
         ];
 
